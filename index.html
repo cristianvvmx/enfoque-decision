@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Supera la Parálisis por Análisis | Guía de Acción</title>
-  <meta name="description" content="Descubre por qué te bloqueas al tomar decisiones y aprende el protocolo clínico para pasar de la sobrecarga a la acción.">
+  <title>Supera la Parálisis por Análisis | Guía y Plantilla de Acción</title>
+  <meta name="description" content="Descubre por qué te bloqueas al tomar decisiones y utiliza nuestra plantilla interactiva para pasar de la sobrecarga a la acción.">
   <style>
     :root {
       --bg: #0f172a;
@@ -15,7 +15,7 @@
       --accent: #38bdf8;
       --accent-glow: rgba(56, 189, 248, 0.15);
       --border: #334155;
-      --success: #10b981;
+      --border-focus: #38bdf8;
       --font-stack: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
 
@@ -34,7 +34,7 @@
     }
 
     .container {
-      max-width: 860px;
+      max-width: 880px;
       margin: 0 auto;
       padding: 0 1.5rem;
     }
@@ -68,7 +68,7 @@
 
     /* Hero */
     .hero {
-      padding: 5rem 0 3.5rem;
+      padding: 4.5rem 0 3rem;
       text-align: center;
     }
 
@@ -93,7 +93,7 @@
       margin: 0 auto 2rem;
     }
 
-    /* Cards & Grids */
+    /* Titles & Grids */
     .section-title {
       font-size: 1.75rem;
       font-weight: 700;
@@ -121,12 +121,6 @@
       border: 1px solid var(--border);
       border-radius: 12px;
       padding: 1.75rem;
-      transition: transform 0.2s ease, border-color 0.2s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-2px);
-      border-color: var(--accent);
     }
 
     .card-num {
@@ -178,7 +172,6 @@
       list-style: none;
       display: grid;
       gap: 0.75rem;
-      margin-top: 1rem;
     }
 
     .insight-block li {
@@ -203,7 +196,7 @@
     .step-item {
       display: flex;
       gap: 1.5rem;
-      padding: 1.5rem 0;
+      padding: 1.25rem 0;
       border-bottom: 1px solid var(--border);
     }
 
@@ -213,8 +206,8 @@
 
     .step-bullet {
       flex-shrink: 0;
-      width: 2.75rem;
-      height: 2.75rem;
+      width: 2.5rem;
+      height: 2.5rem;
       border-radius: 50%;
       background: var(--surface);
       border: 1px solid var(--accent);
@@ -223,12 +216,11 @@
       align-items: center;
       justify-content: center;
       font-weight: 700;
-      font-size: 1.1rem;
     }
 
     .step-content h3 {
       font-size: 1.15rem;
-      margin-bottom: 0.35rem;
+      margin-bottom: 0.25rem;
     }
 
     .step-content p {
@@ -236,39 +228,99 @@
       font-size: 0.95rem;
     }
 
-    /* Call to Action Box */
-    .cta-box {
-      background: linear-gradient(135deg, rgba(56, 189, 248, 0.1) 0%, rgba(129, 140, 248, 0.05) 100%);
-      border: 1px solid rgba(56, 189, 248, 0.3);
+    /* Plantilla Interactiva (Worksheet) */
+    .worksheet-card {
+      background: #141e33;
+      border: 2px solid var(--accent);
       border-radius: 16px;
-      padding: 3rem 2rem;
+      padding: 2.5rem 2rem;
+      margin: 4rem 0 5rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .worksheet-header {
       text-align: center;
-      margin-bottom: 5rem;
+      margin-bottom: 2rem;
+      border-bottom: 1px dashed var(--border);
+      padding-bottom: 1.5rem;
     }
 
-    .cta-box h2 {
+    .worksheet-header h2 {
       font-size: 1.8rem;
-      margin-bottom: 0.75rem;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
     }
 
-    .cta-box p {
+    .worksheet-header p {
       color: var(--text-muted);
-      max-width: 540px;
-      margin: 0 auto 1.75rem;
+      font-size: 0.95rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.75rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: 700;
+      font-size: 0.95rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-main);
+    }
+
+    .form-group label span {
+      color: var(--accent);
+      font-weight: 400;
+      font-size: 0.85rem;
+    }
+
+    .form-input, .form-textarea {
+      width: 100%;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.85rem;
+      color: #fff;
+      font-size: 0.95rem;
+      font-family: inherit;
+      transition: border-color 0.2s;
+    }
+
+    .form-input:focus, .form-textarea:focus {
+      outline: none;
+      border-color: var(--border-focus);
+      background: #243248;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+    }
+
+    .worksheet-actions {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
     }
 
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      gap: 0.5rem;
       background: var(--accent);
       color: #041226;
       font-weight: 700;
       padding: 0.85rem 1.75rem;
       border-radius: 8px;
       text-decoration: none;
-      transition: opacity 0.2s ease, transform 0.2s ease;
+      border: none;
+      cursor: pointer;
       font-size: 1rem;
+      transition: opacity 0.2s, transform 0.2s;
     }
 
     .btn:hover {
@@ -276,7 +328,17 @@
       transform: scale(1.02);
     }
 
-    /* Footer */
+    .btn-secondary {
+      background: transparent;
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--surface);
+      color: var(--text-main);
+    }
+
     footer {
       border-top: 1px solid var(--border);
       padding: 2.5rem 0;
@@ -285,13 +347,46 @@
       font-size: 0.85rem;
     }
 
-    @media (max-width: 600px) {
-      .hero {
-        padding: 3.5rem 0 2.5rem;
+    /* Optimización para Impresión (Una sola hoja PDF) */
+    @media print {
+      body {
+        background: #fff !important;
+        color: #000 !important;
       }
-      .step-item {
-        flex-direction: column;
-        gap: 0.75rem;
+      header, .hero, section:not(#plantilla-section), footer, .worksheet-actions {
+        display: none !important;
+      }
+      .container {
+        max-width: 100% !important;
+        padding: 0 !important;
+      }
+      .worksheet-card {
+        background: #fff !important;
+        border: 2px solid #000 !important;
+        color: #000 !important;
+        box-shadow: none !important;
+        padding: 1.5rem !important;
+        margin: 0 !important;
+      }
+      .worksheet-header h2 {
+        color: #000 !important;
+      }
+      .form-input, .form-textarea {
+        background: #fff !important;
+        color: #000 !important;
+        border: 1px solid #444 !important;
+      }
+      .form-group label {
+        color: #000 !important;
+      }
+    }
+
+    @media (max-width: 650px) {
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+      .hero {
+        padding: 3.5rem 0 2rem;
       }
     }
   </style>
@@ -312,15 +407,15 @@
       <div class="badge">EVIDENCIA CIENTÍFICA & NEUROCIENCIA</div>
       <h1>¿Paralizado al decidir? <br><span>No es pereza, es sobrecarga.</span></h1>
       <p>
-        Cuando la mente evalúa demasiadas variables, la corteza prefrontal se satura. Descubre por qué ocurre este bloqueo y cómo superarlo con un sistema claro.
+        Cuando la mente evalúa demasiadas variables, la corteza prefrontal se satura. Descubre por qué ocurre este bloqueo y desbloquéate con la plantilla al final de esta página.
       </p>
-      <a href="#protocolo" class="btn">Ver el Protocolo de Acción ↓</a>
+      <a href="#plantilla-section" class="btn">Ir Directo a la Plantilla ↓</a>
     </section>
 
     <!-- Los 3 Tipos de Parálisis -->
     <section>
       <h2 class="section-title">Las 3 Caras de la Parálisis</h2>
-      <p class="section-desc">Identificar con precisión tu tipo de bloqueo es el primer paso para desarmarlo.</p>
+      <p class="section-desc">Identifica con precisión tu tipo de bloqueo para desarmarlo de raíz.</p>
       
       <div class="grid-3">
         <div class="card">
@@ -343,7 +438,7 @@
           <div class="card-num">03</div>
           <h3>Parálisis Mental</h3>
           <p>
-            Saturación cognitiva o niebla mental (brain fog). El exceso de información y estímulos hace que el cerebro se apague temporalmente por autoprotección.
+            Saturación cognitiva o niebla mental. El exceso de información y estímulos hace que el cerebro se apague temporalmente por autoprotección.
           </p>
         </div>
       </div>
@@ -353,63 +448,96 @@
     <section class="insight-block">
       <h2>La Base Neurobiológica: Lo que la Ciencia Demuestra</h2>
       <p>
-        Las investigaciones sobre funciones ejecutivas (como las documentadas por el Dr. Russell Barkley) revelan que la indecisión crónica no proviene de falta de carácter, sino de dos factores mecánicos:
+        Las investigaciones sobre funciones ejecutivas (como las documentadas por el Dr. Russell Barkley) confirman que la indecisión no es falta de voluntad:
       </p>
       <ul>
-        <li><strong>Límite de la Memoria de Trabajo:</strong> La mente humana solo puede retener un número muy limitado de variables activas antes de colapsar en confusión.</li>
-        <li><strong>Regulación de Dopamina:</strong> Si una tarea parece titánica o no ofrece un estímulo claro a corto plazo, el cerebro entra en respuesta de congelamiento (<em>freeze state</em>).</li>
+        <li><strong>Límite de la Memoria de Trabajo:</strong> Tu cerebro no puede procesar más de 3 o 4 variables complejas sin generar fatiga extrema.</li>
+        <li><strong>Déficit de Dopamina:</strong> Si una tarea parece enorme y no ofrece un avance visible inmediato, la mente entra en respuesta de congelamiento (<em>freeze state</em>).</li>
       </ul>
     </section>
 
-    <!-- Protocolo de Escape -->
-    <section class="steps-section" id="protocolo">
-      <h2 class="section-title">Protocolo 80/20: Reglas de Escape</h2>
-      <p class="section-desc">Tres principios para recuperar el mando y forzar la ejecución hoy mismo.</p>
+    <!-- Protocolo 80/20 -->
+    <section class="steps-section">
+      <h2 class="section-title">El Protocolo 80/20 de Escape</h2>
+      <p class="section-desc">Tres principios para recuperar el mando de inmediato.</p>
 
       <div class="step-item">
         <div class="step-bullet">1</div>
         <div class="step-content">
           <h3>Podar a 2 Opciones Máximo</h3>
-          <p>
-            Elimina deliberadamente todas las opciones secundarias. Si dudas entre 5 caminos, descarta 3 al azar. Es mejor avanzar con una decisión buena que morir esperando la perfecta.
-          </p>
+          <p>Elimina las alternativas secundarias. Quédate únicamente con el dilema A o B.</p>
         </div>
       </div>
 
       <div class="step-item">
         <div class="step-bullet">2</div>
         <div class="step-content">
-          <h3>El Micro-Paso Ridículamente Pequeño</h3>
-          <p>
-            No te obligues a "terminar el proyecto". Oblígate únicamente a abrir el archivo o escribir una sola línea durante 2 minutos. Romper la inercia reduce drásticamente la resistencia mental.
-          </p>
+          <h3>Externalizar en Papel</h3>
+          <p>Vacía tus pensamientos en una estructura visible. Si está en tu cabeza, te abruma; si está en papel, se ejecuta.</p>
         </div>
       </div>
 
       <div class="step-item">
         <div class="step-bullet">3</div>
         <div class="step-content">
-          <h3>Externalizar la Memoria</h3>
-          <p>
-            Nunca tomes decisiones complejas dentro de tu cabeza. Escribe los dos únicos caminos en un papel en blanco. Al hacer tangible el pensamiento, liberas carga cognitiva al instante.
-          </p>
+          <h3>El Micro-Paso de 5 Minutos</h3>
+          <p>Rompe la inercia con una acción mínima y sin riesgo. La motivación no precede a la acción; la acción genera la motivación.</p>
         </div>
       </div>
     </section>
 
-    <!-- Llamado a la Acción -->
-    <section class="cta-box">
-      <h2>Pasa de la Teoría a la Conquista</h2>
-      <p>
-        El orden y la claridad no llegan por accidente; se construyen con sistemas probados. Descarga la plantilla de toma de decisiones para aplicar este método paso a paso.
-      </p>
-      <a href="mailto:tu-correo@ejemplo.com?subject=Solicitud de Guía de Toma de Decisiones" class="btn">Recibir Plantilla de Acción</a>
+    <!-- SECCIÓN DE LA PLANTILLA INTERACTIVA -->
+    <section id="plantilla-section">
+      <div class="worksheet-card">
+        <div class="worksheet-header">
+          <h2>📋 Plantilla Táctica de Desbloqueo</h2>
+          <p>Llena este formulario ahora mismo. Al terminar, puedes guardarlo o imprimirlo en PDF.</p>
+        </div>
+
+        <form id="decisionForm">
+          <!-- Paso 1 -->
+          <div class="form-group">
+            <label for="problema">1. La Decisión Concreta <span>(Escríbela en una sola frase clara)</span></label>
+            <input type="text" id="problema" class="form-input" placeholder="Ej: ¿Debo lanzar mi curso digital o crear primero el canal de YouTube?">
+          </div>
+
+          <!-- Paso 2: Comparación 80/20 -->
+          <div class="grid-2">
+            <div class="form-group">
+              <label for="opcionA">Opción A <span>(Primera alternativa viable)</span></label>
+              <textarea id="opcionA" rows="4" class="form-textarea" placeholder="Describe la opción A, su mayor ventaja y su costo real..."></textarea>
+            </div>
+            <div class="form-group">
+              <label for="opcionB">Opción B <span>(Segunda alternativa viable)</span></label>
+              <textarea id="opcionB" rows="4" class="form-textarea" placeholder="Describe la opción B, su mayor ventaja y su costo real..."></textarea>
+            </div>
+          </div>
+
+          <!-- Paso 3 -->
+          <div class="form-group">
+            <label for="costoInaccion">2. El Costo de No Decidir Hoy <span>(¿Qué pierdes si sigues paralizado una semana más?)</span></label>
+            <input type="text" id="costoInaccion" class="form-input" placeholder="Ej: Pierdo tiempo, aumento mi estrés y retraso la provisión de mi hogar.">
+          </div>
+
+          <!-- Paso 4 -->
+          <div class="form-group">
+            <label for="eleccion">3. Decisión Elegida & Micro-Paso Inmediato <span>(Regla de los 5 minutos)</span></label>
+            <textarea id="eleccion" rows="3" class="form-textarea" placeholder="Elijo la Opción [A/B]. Mi única tarea para los próximos 5 minutos es: abrir el archivo y redactar el primer párrafo."></textarea>
+          </div>
+
+          <!-- Botones de Acción -->
+          <div class="worksheet-actions">
+            <button type="button" class="btn" onclick="window.print()">🖨️ Imprimir / Guardar en PDF</button>
+            <button type="reset" class="btn btn-secondary">Limpiar Campos</button>
+          </div>
+        </form>
+      </div>
     </section>
   </main>
 
   <footer>
     <div class="container">
-      <p>© 2026 Enfoque y Decisión. Diseñado para educar con orden, rigor y propósito.</p>
+      <p>© 2026 Enfoque y Decisión. Diseñado con orden, rigor y propósito de servicio.</p>
     </div>
   </footer>
 

@@ -3,12 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Supera la Parálisis por Análisis | Guía y Plantilla de Acción</title>
-  <meta name="description" content="Descubre por qué te bloqueas al tomar decisiones y utiliza nuestra plantilla interactiva para pasar de la sobrecarga a la acción.">
+  <title>Supera la Parálisis por Análisis | Test Diagnóstico & Protocolo</title>
+  <meta name="description" content="Evalúa las causas de tu bloqueo decisional y obtén tu diagnóstico clínico personalizado junto a un protocolo táctico de acción.">
   <style>
     :root {
-      --bg: #0f172a;
+      --bg: #0b1120;
       --surface: #1e293b;
+      --surface-light: #27354a;
       --surface-hover: #334155;
       --text-main: #f8fafc;
       --text-muted: #94a3b8;
@@ -16,6 +17,8 @@
       --accent-glow: rgba(56, 189, 248, 0.15);
       --border: #334155;
       --border-focus: #38bdf8;
+      --success: #10b981;
+      --warning: #f59e0b;
       --font-stack: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
 
@@ -45,7 +48,7 @@
     }
 
     .logo {
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       font-weight: 700;
       letter-spacing: -0.02em;
       color: var(--text-main);
@@ -56,7 +59,7 @@
 
     .badge {
       display: inline-block;
-      padding: 0.25rem 0.75rem;
+      padding: 0.25rem 0.85rem;
       font-size: 0.8rem;
       font-weight: 600;
       color: var(--accent);
@@ -89,13 +92,20 @@
     .hero p {
       font-size: 1.2rem;
       color: var(--text-muted);
-      max-width: 640px;
-      margin: 0 auto 2rem;
+      max-width: 660px;
+      margin: 0 auto 2.25rem;
     }
 
-    /* Titles & Grids */
+    .hero-cta {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    /* Titles & General Grids */
     .section-title {
-      font-size: 1.75rem;
+      font-size: 1.85rem;
       font-weight: 700;
       letter-spacing: -0.02em;
       margin-bottom: 0.75rem;
@@ -107,11 +117,14 @@
       text-align: center;
       margin-bottom: 2.5rem;
       font-size: 1.05rem;
+      max-width: 680px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .grid-3 {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 1.25rem;
       margin-bottom: 4rem;
     }
@@ -121,6 +134,12 @@
       border: 1px solid var(--border);
       border-radius: 12px;
       padding: 1.75rem;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
     }
 
     .card-num {
@@ -140,7 +159,6 @@
     .card h3 {
       font-size: 1.2rem;
       margin-bottom: 0.5rem;
-      color: var(--text-main);
     }
 
     .card p {
@@ -154,32 +172,31 @@
       border: 1px solid var(--border);
       border-left: 4px solid var(--accent);
       border-radius: 12px;
-      padding: 2rem;
-      margin-bottom: 4rem;
+      padding: 2.25rem;
+      margin-bottom: 4.5rem;
     }
 
     .insight-block h2 {
-      font-size: 1.4rem;
+      font-size: 1.45rem;
       margin-bottom: 0.75rem;
     }
 
     .insight-block p {
       color: var(--text-muted);
-      margin-bottom: 1rem;
+      margin-bottom: 1.25rem;
     }
 
     .insight-block ul {
       list-style: none;
       display: grid;
-      gap: 0.75rem;
+      gap: 0.85rem;
     }
 
     .insight-block li {
       display: flex;
       align-items: flex-start;
-      gap: 0.6rem;
-      color: var(--text-main);
-      font-size: 0.95rem;
+      gap: 0.65rem;
+      font-size: 0.98rem;
     }
 
     .insight-block li::before {
@@ -188,9 +205,228 @@
       font-weight: bold;
     }
 
-    /* Steps Section */
+    /* TEST SECTION */
+    .test-section {
+      background: #111a2e;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2.5rem 2rem;
+      margin-bottom: 4.5rem;
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.35);
+    }
+
+    .dimension-block {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .dimension-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.75rem;
+    }
+
+    .dim-tag {
+      font-size: 0.75rem;
+      font-weight: 700;
+      background: var(--accent-glow);
+      color: var(--accent);
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .dimension-header h3 {
+      font-size: 1.15rem;
+      color: var(--text-main);
+    }
+
+    .question-item {
+      margin-bottom: 1.25rem;
+      padding-bottom: 1.25rem;
+      border-bottom: 1px dashed rgba(255, 255, 255, 0.08);
+    }
+
+    .question-item:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .question-text {
+      font-size: 0.98rem;
+      margin-bottom: 0.75rem;
+      color: #e2e8f0;
+    }
+
+    .scale-options {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.5rem;
+    }
+
+    .scale-option label {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      padding: 0.5rem 0.25rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      transition: all 0.2s;
+      text-align: center;
+      user-select: none;
+    }
+
+    .scale-option input[type="radio"] {
+      display: none;
+    }
+
+    .scale-option input[type="radio"]:checked + label {
+      background: var(--accent);
+      color: #041226;
+      font-weight: 700;
+      border-color: var(--accent);
+    }
+
+    .test-actions {
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+    /* RESULT CARD */
+    #resultado-diagnostico {
+      display: none;
+      background: linear-gradient(180deg, #16243d 0%, #0f172a 100%);
+      border: 2px solid var(--accent);
+      border-radius: 16px;
+      padding: 2.25rem 2rem;
+      margin-top: 2.5rem;
+      animation: fadeIn 0.4s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .result-title-badge {
+      display: inline-block;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+    }
+
+    .result-title {
+      font-size: 1.6rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      color: #fff;
+    }
+
+    .bars-container {
+      margin: 1.5rem 0 2rem;
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    .bar-row {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .bar-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+    }
+
+    .bar-track {
+      width: 100%;
+      height: 8px;
+      background: var(--surface);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .bar-fill {
+      height: 100%;
+      background: var(--accent);
+      border-radius: 999px;
+      transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .antidote-box {
+      background: rgba(56, 189, 248, 0.08);
+      border-left: 4px solid var(--accent);
+      border-radius: 8px;
+      padding: 1.25rem;
+      margin-top: 1.5rem;
+    }
+
+    .antidote-box h4 {
+      font-size: 1.1rem;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .antidote-box p {
+      font-size: 0.95rem;
+      color: #cbd5e1;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      background: var(--accent);
+      color: #041226;
+      font-weight: 700;
+      padding: 0.85rem 1.85rem;
+      border-radius: 8px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: all 0.2s ease;
+    }
+
+    .btn:hover {
+      opacity: 0.92;
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--surface);
+      color: var(--text-main);
+    }
+
+    /* Protocol Steps */
     .steps-section {
-      margin-bottom: 4rem;
+      margin-bottom: 4.5rem;
     }
 
     .step-item {
@@ -228,7 +464,7 @@
       font-size: 0.95rem;
     }
 
-    /* Plantilla Interactiva (Worksheet) */
+    /* Worksheet */
     .worksheet-card {
       background: #141e33;
       border: 2px solid var(--accent);
@@ -306,39 +542,6 @@
       flex-wrap: wrap;
     }
 
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      background: var(--accent);
-      color: #041226;
-      font-weight: 700;
-      padding: 0.85rem 1.75rem;
-      border-radius: 8px;
-      text-decoration: none;
-      border: none;
-      cursor: pointer;
-      font-size: 1rem;
-      transition: opacity 0.2s, transform 0.2s;
-    }
-
-    .btn:hover {
-      opacity: 0.9;
-      transform: scale(1.02);
-    }
-
-    .btn-secondary {
-      background: transparent;
-      color: var(--text-muted);
-      border: 1px solid var(--border);
-    }
-
-    .btn-secondary:hover {
-      background: var(--surface);
-      color: var(--text-main);
-    }
-
     footer {
       border-top: 1px solid var(--border);
       padding: 2.5rem 0;
@@ -347,7 +550,7 @@
       font-size: 0.85rem;
     }
 
-    /* Optimización para Impresión (Una sola hoja PDF) */
+    /* Print Styles */
     @media print {
       body {
         background: #fff !important;
@@ -382,6 +585,9 @@
     }
 
     @media (max-width: 650px) {
+      .scale-options {
+        grid-template-columns: repeat(2, 1fr);
+      }
       .grid-2 {
         grid-template-columns: 1fr;
       }
@@ -405,42 +611,13 @@
     <!-- Hero -->
     <section class="hero">
       <div class="badge">EVIDENCIA CIENTÍFICA & NEUROCIENCIA</div>
-      <h1>¿Paralizado al decidir? <br><span>No es pereza, es sobrecarga.</span></h1>
+      <h1>¿Paralizado al decidir? <br><span>Descubre tu causa raíz real.</span></h1>
       <p>
-        Cuando la mente evalúa demasiadas variables, la corteza prefrontal se satura. Descubre por qué ocurre este bloqueo y desbloquéate con la plantilla al final de esta página.
+        La parálisis por análisis no es pereza ni debilidad de carácter. Evalúa tus 5 dimensiones cognitivas y biológicas, diagnostica tu bloqueo exacto y aplica el protocolo de escape.
       </p>
-      <a href="#plantilla-section" class="btn">Ir Directo a la Plantilla ↓</a>
-    </section>
-
-    <!-- Los 3 Tipos de Parálisis -->
-    <section>
-      <h2 class="section-title">Las 3 Caras de la Parálisis</h2>
-      <p class="section-desc">Identifica con precisión tu tipo de bloqueo para desarmarlo de raíz.</p>
-      
-      <div class="grid-3">
-        <div class="card">
-          <div class="card-num">01</div>
-          <h3>Parálisis de Elección</h3>
-          <p>
-            Ocurre ante múltiples opciones. El temor a equivocarse o la búsqueda de la "opción perfecta" agota tu energía mental antes de siquiera comenzar.
-          </p>
-        </div>
-
-        <div class="card">
-          <div class="card-num">02</div>
-          <h3>Parálisis de Tarea</h3>
-          <p>
-            Sabes exactamente qué debes hacer, pero existe una fricción invisible que te impide dar el primer paso. Es una desconexión entre saber y actuar.
-          </p>
-        </div>
-
-        <div class="card">
-          <div class="card-num">03</div>
-          <h3>Parálisis Mental</h3>
-          <p>
-            Saturación cognitiva o niebla mental. El exceso de información y estímulos hace que el cerebro se apague temporalmente por autoprotección.
-          </p>
-        </div>
+      <div class="hero-cta">
+        <a href="#test-section" class="btn">Hacer el Test Diagnóstico ↓</a>
+        <a href="#protocolo" class="btn btn-secondary">Ver Protocolo 80/20</a>
       </div>
     </section>
 
@@ -448,24 +625,254 @@
     <section class="insight-block">
       <h2>La Base Neurobiológica: Lo que la Ciencia Demuestra</h2>
       <p>
-        Las investigaciones sobre funciones ejecutivas (como las documentadas por el Dr. Russell Barkley) confirman que la indecisión no es falta de voluntad:
+        Investigaciones clínicas sobre funciones ejecutivas (lideradas por el Dr. Russell Barkley) confirman que el colapso decisional obedece a mecanismos biológicos concretos:
       </p>
       <ul>
-        <li><strong>Límite de la Memoria de Trabajo:</strong> Tu cerebro no puede procesar más de 3 o 4 variables complejas sin generar fatiga extrema.</li>
-        <li><strong>Déficit de Dopamina:</strong> Si una tarea parece enorme y no ofrece un avance visible inmediato, la mente entra en respuesta de congelamiento (<em>freeze state</em>).</li>
+        <li><strong>Límite de la Memoria de Trabajo:</strong> El cerebro humano no puede sostener más de 3 variables simultáneas complejas sin entrar en saturación cognitiva.</li>
+        <li><strong>Desregulación de Dopamina:</strong> Si una tarea parece titánica o carece de urgencia y recompensa inmediata, el sistema nervioso activa una respuesta de congelamiento (<em>freeze response</em>).</li>
       </ul>
     </section>
 
+    <!-- SECCIÓN TEST INTERACTIVO -->
+    <section id="test-section" class="test-section">
+      <h2 class="section-title">El Mapa del Desbloqueo: Test Diagnóstico</h2>
+      <p class="section-desc">
+        Responde con honestidad cada afirmación asignando tu nivel de frecuencia: <br>
+        <strong>0 = Nunca</strong> | <strong>1 = Leve</strong> | <strong>2 = Frecuente</strong> | <strong>3 = Crítico</strong>
+      </p>
+
+      <form id="diagnosticForm">
+        <!-- Dimensión 1 -->
+        <div class="dimension-block">
+          <div class="dimension-header">
+            <span class="dim-tag">Dimensión 1</span>
+            <h3>Psicológica y Emocional</h3>
+          </div>
+          <div class="question-item">
+            <p class="question-text">1. Siento que si mi decisión no es perfecta o libre de error, es preferible postergarla para evitar el arrepentimiento.</p>
+            <div class="scale-options">
+              <div class="scale-option"><input type="radio" name="q1" id="q1_0" value="0" checked><label for="q1_0">0. Nunca</label></div>
+              <div class="scale-option"><input type="radio" name="q1" id="q1_1" value="1"><label for="q1_1">1. Leve</label></div>
+              <div class="scale-option"><input type="radio" name="q1" id="q1_2" value="2"><label for="q1_2">2. Frecuente</label></div>
+              <div class="scale-option"><input type="radio" name="q1" id="q1_3" value="3"><label for="q1_3">3. Crítico</label></div>
+            </div>
+          </div>
+          <div class="question-item">
+            <p class="question-text">2. Doy vueltas obsesivas a lo que podría salir mal (proyección catastrófica) o dudo de mi propio criterio buscando aprobación.</p>
+            <div class="scale-options">
+              <div class="scale-option"><input type="radio" name="q2" id="q2_0" value="0" checked><label for="q2_0">0. Nunca</label></div>
+              <div class="scale-option"><input type="radio" name="q2" id="q2_1" value="1"><label for="q2_1">1. Leve</label></div>
+              <div class="scale-option"><input type="radio" name="q2" id="q2_2" value="2"><label for="q2_2">2. Frecuente</label></div>
+              <div class="scale-option"><input type="radio" name="q2" id="q2_3" value="3"><label for="q2_3">3. Crítico</label></div>
+            </div>
+          </div>
+          <div class="question-item">
+            <p class="question-text">3. Me angustia pensar en los beneficios que perderé de las alternativas que debo descartar (coste de oportunidad).</p>
+            <div class="scale-options">
+              <div class="scale-option"><input type="radio" name="q3" id="q3_0" value="0" checked><label for="q3_0">0. Nunca</label></div>
+              <div class="scale-option"><input type="radio" name="q3" id="q3_1" value="1"><label for="q3_1">1. Leve</label></div>
+              <div class="scale-option"><input type="radio" name="q3" id="q3_2" value="2"><label for="q3_2">2. Frecuente</label></div>
+              <div class="scale-option"><input type="radio" name="q3" id="q3_3" value="3"><label for="q3_3">3. Crítico</label></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dimensión 2 -->
+        <div class="dimension-block">
+          <div class="dimension-header">
+            <span class="dim-tag">Dimensión 2</span>
+            <h3>Cognitiva y de la Tarea</h3>
+          </div>
+          <div class="question-item">
+            <p class="question-text">4. Tengo tantas fuentes, pestañas, videos y opiniones abiertas que me siento "infoxicado" y sin claridad mental.</p>
+            <div class="scale-options">
+              <div class="scale-option"><input type="radio" name="q4" id="q4_0" value="0" checked><label for="q4_0">0. Nunca</label></div>
+              <div class="scale-option"><input type="radio" name="q4" id="q4_1" value="1"><label for="q4_1">1. Leve</label></div>
+              <div class="scale-option"><input type="radio" name="q4" id="q4_2" value="2"><label for="q4_2">2. Frecuente</label></div>
+              <div class="scale-option"><input type="radio" name="q4" id="q4_3" value="3"><label for="q4_3">3. Crítico</label></div>
+            </div>
+          </div>
+          <div class="question-item">
+            <p class="question-text">5. Ante demasiadas opciones parecidas, me abrumo comparando detalles mínimos y no elijo ninguna (paradoja de la elección).</p>
+            <div class="scale-options">
+              <div class="scale-option"><input type="radio" name="q5" id="q5_0" value="0" checked><label for="q5_0">0. Nunca</label></div>
+              <div class="scale-option"><input type="radio" name="q5" id="q5_1" value="1"><label for="q5_1">1. Leve</label></div>
+              <div class="scale-option"><input type="radio" name="q5" id="q5_2" value="2"><label for="q5_2">2. Frecuente</label></div>
+              <div class="scale-option"><input type="radio" name="q5" id="q5_3" value="3"><label for="q5_3">3. Crítico</label></div>
+            </div>
+          </div>
+          <div class="question-item">
+            <p class="question-text">6. La tarea me resulta ambigua: sé a dónde quiero llegar pero no tengo idea de cuál es el punto de inicio exacto.</p>
+            <div class="scale-options">
+              <div class="scale-option"><input type="radio" name="q6" id="q6_0" value="0" checked><label for="q6_0">0. Nunca</label></div>
+              <div class="scale-option"><input type="radio" name="q6" id="q6_1" value="1"><label for="q6_1">1. Leve</label></div>
+              <div class="scale-option"><input type="radio" name="q6" id="q6_2" value="2"><label for="q6_2">2. Frecuente</label></div>
+              <div class="scale-option"><input type="radio" name="q6" id="q6_3" value="3"><label for="q6_3">3. Crítico</label></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dimensión 3 -->
+        <div class="dimension-block">
+          <div class="dimension-header">
+            <span class="dim-tag">Dimensión 3</span>
+            <h3>Biológica y Neurodivergencia</h3>
+          </div>
+          <div class="question-item">
+            <p class="question-text">7. Sé lo que debo hacer pero siento un freno mental y físico para arrancar si no hay urgencia inmediata (desregulación de dopamina).</p>
+            <div class="scale-options">
+              <div class="scale-option"><input type="radio" name="q7" id="q7_0" value="0" checked><label for="q7_0">0. Nunca</label></div>
+              <div class="scale-option"><input type="radio" name="q7" id="q7_1" value="1"><label for="q7_1">1. Leve</label></div>
+              <div class="scale-option"><input type="radio" name="q7" id="q7_2" value="2"><label for="q7_2">2. Frecuente</label></div>
+              <div class="scale-option"><input type="radio" name="q7" id="q7_3" value="3"><label for="q7_3">3. Crítico</label></div>
+            </div>
+          </div>
+          <div class="question-item">
+            <p class="question-text">8. Intento procesar más de dos variables al mismo tiempo en mi cabeza y experimento apagón mental o niebla cognitiva (brain fog).</p>
+            <div class="scale-options">
+              <div class="scale-option"><input type="radio" name="q8" id="q8_0" value="0" checked><label for="q8_0">0. Nunca</label></div>
+              <div class="scale-option"><input type="radio" name="q8" id="q8_1" value="1"><label for="q8_1">1. Leve</label></div>
+              <div class="scale-option"><input type="radio" name="q8" id="q8_2" value="2"><label for="q8_2">2. Frecuente</label></div>
+              <div class="scale-option"><input type="radio" name="q8" id="q8_3" value="3"><label for="q8_3">3. Crítico</label></div>
+            </div>
+          </div>
+          <div class="question-item">
+            <p class="question-text">9. Siento agotamiento físico, irritabilidad o estrés constante (cortisol alto) por mantener el cerebro sobregirado sin tomar acción.</p>
+            <div class="scale-options">
+              <div class="scale-option"><input type="radio" name="q9" id="q9_0" value="0" checked><label for="q9_0">0. Nunca</label></div>
+              <div class="scale-option"><input type="radio" name="q9" id="q9_1" value="1"><label for="q9_1">1. Leve</label></div>
+              <div class="scale-option"><input type="radio" name="q9" id="q9_2" value="2"><label for="q9_2">2. Frecuente</label></div>
+              <div class="scale-option"><input type="radio" name="q9" id="q9_3" value="3"><label for="q9_3">3. Crítico</label></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dimensión 4 -->
+        <div class="dimension-block">
+          <div class="dimension-header">
+            <span class="dim-tag">Dimensión 4</span>
+            <h3>Organizacional y de Equipo</h3>
+          </div>
+          <div class="question-item">
+            <p class="question-text">10. Se solicitan constantemente nuevos reportes, métricas o análisis detallados solo para postergar decisiones incómodas (síndrome de Banalytics).</p>
+            <div class="scale-options">
+              <div class="scale-option"><input type="radio" name="q10" id="q10_0" value="0" checked><label for="q10_0">0. Nunca</label></div>
+              <div class="scale-option"><input type="radio" name="q10" id="q10_1" value="1"><label for="q10_1">1. Leve</label></div>
+              <div class="scale-option"><input type="radio" name="q10" id="q10_2" value="2"><label for="q10_2">2. Frecuente</label></div>
+              <div class="scale-option"><input type="radio" name="q10" id="q10_3" value="3"><label for="q10_3">3. Crítico</label></div>
+            </div>
+          </div>
+          <div class="question-item">
+            <p class="question-text">11. Hay reuniones interminables donde se discuten problemas pero nadie asume la responsabilidad individual de decidir y ejecutar.</p>
+            <div class="scale-options">
+              <div class="scale-option"><input type="radio" name="q11" id="q11_0" value="0" checked><label for="q11_0">0. Nunca</label></div>
+              <div class="scale-option"><input type="radio" name="q11" id="q11_1" value="1"><label for="q11_1">1. Leve</label></div>
+              <div class="scale-option"><input type="radio" name="q11" id="q11_2" value="2"><label for="q11_2">2. Frecuente</label></div>
+              <div class="scale-option"><input type="radio" name="q11" id="q11_3" value="3"><label for="q11_3">3. Crítico</label></div>
+            </div>
+          </div>
+          <div class="question-item">
+            <p class="question-text">12. En mi entorno de trabajo se premia reportar y hacer presentaciones por encima de generar impacto real.</p>
+            <div class="scale-options">
+              <div class="scale-option"><input type="radio" name="q12" id="q12_0" value="0" checked><label for="q12_0">0. Nunca</label></div>
+              <div class="scale-option"><input type="radio" name="q12" id="q12_1" value="1"><label for="q12_1">1. Leve</label></div>
+              <div class="scale-option"><input type="radio" name="q12" id="q12_2" value="2"><label for="q12_2">2. Frecuente</label></div>
+              <div class="scale-option"><input type="radio" name="q12" id="q12_3" value="3"><label for="q12_3">3. Crítico</label></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dimensión 5 -->
+        <div class="dimension-block">
+          <div class="dimension-header">
+            <span class="dim-tag">Dimensión 5</span>
+            <h3>Social y Contextual</h3>
+          </div>
+          <div class="question-item">
+            <p class="question-text">13. Me paraliza pensar en el qué dirán, la burla o el juicio familiar/social si el resultado de mi decisión no funciona.</p>
+            <div class="scale-options">
+              <div class="scale-option"><input type="radio" name="q13" id="q13_0" value="0" checked><label for="q13_0">0. Nunca</label></div>
+              <div class="scale-option"><input type="radio" name="q13" id="q13_1" value="1"><label for="q13_1">1. Leve</label></div>
+              <div class="scale-option"><input type="radio" name="q13" id="q13_2" value="2"><label for="q13_2">2. Frecuente</label></div>
+              <div class="scale-option"><input type="radio" name="q13" id="q13_3" value="3"><label for="q13_3">3. Crítico</label></div>
+            </div>
+          </div>
+          <div class="question-item">
+            <p class="question-text">14. Por fracasos pasados que me dolieron mucho, desarrollé una aversión extrema al riesgo para no repetir la equivocación.</p>
+            <div class="scale-options">
+              <div class="scale-option"><input type="radio" name="q14" id="q14_0" value="0" checked><label for="q14_0">0. Nunca</label></div>
+              <div class="scale-option"><input type="radio" name="q14" id="q14_1" value="1"><label for="q14_1">1. Leve</label></div>
+              <div class="scale-option"><input type="radio" name="q14" id="q14_2" value="2"><label for="q14_2">2. Frecuente</label></div>
+              <div class="scale-option"><input type="radio" name="q14" id="q14_3" value="3"><label for="q14_3">3. Crítico</label></div>
+            </div>
+          </div>
+          <div class="question-item">
+            <p class="question-text">15. Suelo postergar mis convicciones personales para imitar lo que hace la mayoría por miedo a quedar excluido.</p>
+            <div class="scale-options">
+              <div class="scale-option"><input type="radio" name="q15" id="q15_0" value="0" checked><label for="q15_0">0. Nunca</label></div>
+              <div class="scale-option"><input type="radio" name="q15" id="q15_1" value="1"><label for="q15_1">1. Leve</label></div>
+              <div class="scale-option"><input type="radio" name="q15" id="q15_2" value="2"><label for="q15_2">2. Frecuente</label></div>
+              <div class="scale-option"><input type="radio" name="q15" id="q15_3" value="3"><label for="q15_3">3. Crítico</label></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="test-actions">
+          <button type="button" class="btn" onclick="calcularDiagnostico()">📊 Calcular mi Diagnóstico Clínico</button>
+        </div>
+      </form>
+
+      <!-- Panel de Resultado Dinámico -->
+      <div id="resultado-diagnostico">
+        <span class="result-title-badge">Diagnóstico Personalizado</span>
+        <h3 class="result-title" id="res-nombre-raiz">Cargando diagnóstico...</h3>
+        <p id="res-descripcion" style="color: var(--text-muted); font-size: 1rem;"></p>
+
+        <!-- Barras de Nivel -->
+        <div class="bars-container">
+          <div class="bar-row">
+            <div class="bar-labels"><span>Psicológica & Emocional</span><span id="score-val-1">0/9</span></div>
+            <div class="bar-track"><div class="bar-fill" id="bar-1" style="width: 0%;"></div></div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-labels"><span>Cognitiva & Tarea</span><span id="score-val-2">0/9</span></div>
+            <div class="bar-track"><div class="bar-fill" id="bar-2" style="width: 0%;"></div></div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-labels"><span>Biológica & Neurodivergencia</span><span id="score-val-3">0/9</span></div>
+            <div class="bar-track"><div class="bar-fill" id="bar-3" style="width: 0%;"></div></div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-labels"><span>Organizacional & Equipo</span><span id="score-val-4">0/9</span></div>
+            <div class="bar-track"><div class="bar-fill" id="bar-4" style="width: 0%;"></div></div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-labels"><span>Social & Contextual</span><span id="score-val-5">0/9</span></div>
+            <div class="bar-track"><div class="bar-fill" id="bar-5" style="width: 0%;"></div></div>
+          </div>
+        </div>
+
+        <div class="antidote-box">
+          <h4>💡 Antídoto Táctico Inmediato:</h4>
+          <p id="res-antidoto"></p>
+        </div>
+
+        <div style="text-align: center; margin-top: 2rem;">
+          <a href="#plantilla-section" class="btn">Aplicar la Plantilla de Desbloqueo Ahora ↓</a>
+        </div>
+      </div>
+    </section>
+
     <!-- Protocolo 80/20 -->
-    <section class="steps-section">
+    <section class="steps-section" id="protocolo">
       <h2 class="section-title">El Protocolo 80/20 de Escape</h2>
-      <p class="section-desc">Tres principios para recuperar el mando de inmediato.</p>
+      <p class="section-desc">Tres principios innegociables para recuperar el mando de inmediato.</p>
 
       <div class="step-item">
         <div class="step-bullet">1</div>
         <div class="step-content">
           <h3>Podar a 2 Opciones Máximo</h3>
-          <p>Elimina las alternativas secundarias. Quédate únicamente con el dilema A o B.</p>
+          <p>Elimina las alternativas secundarias. Si dudas entre cinco caminos, descarta tres. Quédate únicamente con el dilema A o B.</p>
         </div>
       </div>
 
@@ -473,7 +880,7 @@
         <div class="step-bullet">2</div>
         <div class="step-content">
           <h3>Externalizar en Papel</h3>
-          <p>Vacía tus pensamientos en una estructura visible. Si está en tu cabeza, te abruma; si está en papel, se ejecuta.</p>
+          <p>Vacía tus pensamientos en una estructura visible. Si está en tu mente, te satura; si está en papel, se ejecuta.</p>
         </div>
       </div>
 
@@ -495,13 +902,11 @@
         </div>
 
         <form id="decisionForm">
-          <!-- Paso 1 -->
           <div class="form-group">
             <label for="problema">1. La Decisión Concreta <span>(Escríbela en una sola frase clara)</span></label>
-            <input type="text" id="problema" class="form-input" placeholder="Ej: ¿Debo lanzar mi curso digital o crear primero el canal de YouTube?">
+            <input type="text" id="problema" class="form-input" placeholder="Ej: ¿Debo lanzar mi tienda digital hoy o perfeccionar el catálogo una semana más?">
           </div>
 
-          <!-- Paso 2: Comparación 80/20 -->
           <div class="grid-2">
             <div class="form-group">
               <label for="opcionA">Opción A <span>(Primera alternativa viable)</span></label>
@@ -513,19 +918,16 @@
             </div>
           </div>
 
-          <!-- Paso 3 -->
           <div class="form-group">
             <label for="costoInaccion">2. El Costo de No Decidir Hoy <span>(¿Qué pierdes si sigues paralizado una semana más?)</span></label>
-            <input type="text" id="costoInaccion" class="form-input" placeholder="Ej: Pierdo tiempo, aumento mi estrés y retraso la provisión de mi hogar.">
+            <input type="text" id="costoInaccion" class="form-input" placeholder="Ej: Pierdo tiempo, aumento mi cortisol y detengo la provisión de mi hogar.">
           </div>
 
-          <!-- Paso 4 -->
           <div class="form-group">
             <label for="eleccion">3. Decisión Elegida & Micro-Paso Inmediato <span>(Regla de los 5 minutos)</span></label>
             <textarea id="eleccion" rows="3" class="form-textarea" placeholder="Elijo la Opción [A/B]. Mi única tarea para los próximos 5 minutos es: abrir el archivo y redactar el primer párrafo."></textarea>
           </div>
 
-          <!-- Botones de Acción -->
           <div class="worksheet-actions">
             <button type="button" class="btn" onclick="window.print()">🖨️ Imprimir / Guardar en PDF</button>
             <button type="reset" class="btn btn-secondary">Limpiar Campos</button>
@@ -540,6 +942,85 @@
       <p>© 2026 Enfoque y Decisión. Diseñado con orden, rigor y propósito de servicio.</p>
     </div>
   </footer>
+
+  <!-- SCRIPT DE CÁLCULO DIAGNÓSTICO -->
+  <script>
+    function getVal(name) {
+      const el = document.querySelector(`input[name="${name}"]:checked`);
+      return el ? parseInt(el.value, 10) : 0;
+    }
+
+    function calcularDiagnostico() {
+      // 1. Calcular subtotales (máximo 9 pts por dimensión)
+      const d1 = getVal('q1') + getVal('q2') + getVal('q3');
+      const d2 = getVal('q4') + getVal('q5') + getVal('q6');
+      const d3 = getVal('q7') + getVal('q8') + getVal('q9');
+      const d4 = getVal('q10') + getVal('q11') + getVal('q12');
+      const d5 = getVal('q13') + getVal('q14') + getVal('q15');
+
+      const scores = [
+        { id: 1, name: "Psicológica y Emocional", val: d1 },
+        { id: 2, name: "Cognitiva y de la Tarea", val: d2 },
+        { id: 3, name: "Biológica y Neurodivergencia", val: d3 },
+        { id: 4, name: "Organizacional y de Equipo", val: d4 },
+        { id: 5, name: "Social y Contextual", val: d5 }
+      ];
+
+      // 2. Actualizar barras visuales
+      scores.forEach(s => {
+        const pct = Math.round((s.val / 9) * 100);
+        document.getElementById(`bar-${s.id}`).style.width = pct + "%";
+        document.getElementById(`score-val-${s.id}`).innerText = `${s.val}/9 pts`;
+      });
+
+      // 3. Determinar dimensión dominante
+      let mayor = scores[0];
+      for (let i = 1; i < scores.length; i++) {
+        if (scores[i].val > mayor.val) {
+          mayor = scores[i];
+        }
+      }
+
+      // 4. Perfiles y Antídotos clínicos
+      const perfiles = {
+        1: {
+          titulo: "Raíz Primaria: Perfeccionismo y Miedo al Error",
+          desc: "Tu freno no es falta de capacidad, sino la exigencia desmedida de una decisión impecable y la angustia de descartar opciones. El miedo al arrepentimiento te mantiene congelado evaluando escenarios futuros.",
+          antidoto: "Aplica la Regla del 70%: si tienes el 70% de certeza y datos, decide ya. El 30% restante solo se aprende en el campo. Asume el margen de error como inversión en aprendizaje, no como fracaso de identidad."
+        },
+        2: {
+          titulo: "Raíz Primaria: Infoxicación y Sobrecarga de Opciones",
+          desc: "Estás atrapado en la 'paradoja de la elección'. Tienes exceso de datos, pestañas y opiniones contradictorias que saturan tu capacidad de discernimiento.",
+          antidoto: "Dieta informativa radical: prohíbete leer otro artículo o pedir más opiniones. Poda tus alternativas a solo 2 (Opción A vs Opción B) y aplica la regla de satisfacción: elige la primera opción que cumpla el estándar mínimo aceptable."
+        },
+        3: {
+          titulo: "Raíz Primaria: Disfunción Ejecutiva y Agotamiento Biológico",
+          desc: "Tu cerebro experimenta déficit de activación dopamínica y saturación de la memoria de trabajo. No es falta de voluntad; es una limitación física para sostener variables en la cabeza sin urgencia inmediata.",
+          antidoto: "Externalización inmediata y Micro-iniciación de 2 minutos. No decidas en el aire: escribe las opciones en papel para liberar tu corteza prefrontal. Baja la barra al suelo: tu única meta ahora es dar un micro-paso ridículamente pequeño (ej: abrir el archivo) con un temporizador de 2 minutos."
+        },
+        4: {
+          titulo: "Raíz Primaria: Síndrome de Banalytics y Dilución de Mando",
+          desc: "El entorno premia reportar y hacer presentaciones estéticas antes que ejecutar. Las reuniones interminables y la falta de un dueño claro de la decisión están postergando el impacto real.",
+          antidoto: "Responsabilidad Radical: un solo dueño por decisión. Prohíbe reuniones sin una decisión binaria requerida (Sí o No) y una fecha límite innegociable. Pasa de pedir más datos a exigir recomendaciones de acción."
+        },
+        5: {
+          titulo: "Raíz Primaria: Presión Social y Cicatrices del Pasado",
+          desc: "El temor al juicio externo o las malas experiencias previas te han generado una aversión desmedida al riesgo. Te preocupa más no decepcionar a terceros que avanzar con firmeza.",
+          antidoto: "Blindaje de Identidad: separa los errores del pasado de tus capacidades presentes. Un líder prudente consulta a Dios y a su convicción interna, no al murmullo de la multitud. La provisión de tu casa no depende de la aprobación pública."
+        }
+      };
+
+      const diagnosticoFinal = perfiles[mayor.id];
+      document.getElementById('res-nombre-raiz').innerText = diagnosticoFinal.titulo;
+      document.getElementById('res-descripcion').innerText = diagnosticoFinal.desc;
+      document.getElementById('res-antidoto').innerText = diagnosticoFinal.antidoto;
+
+      // 5. Mostrar resultado y hacer scroll suave
+      const panel = document.getElementById('resultado-diagnostico');
+      panel.style.display = 'block';
+      panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  </script>
 
 </body>
 </html>

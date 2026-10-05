@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Supera la Parálisis por Análisis | Guía de Acción</title>
+  <meta name="description" content="Descubre por qué te bloqueas al tomar decisiones y aprende el protocolo clínico para pasar de la sobrecarga a la acción.">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --surface: #1e293b;
+      --surface-hover: #334155;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-glow: rgba(56, 189, 248, 0.15);
+      --border: #334155;
+      --success: #10b981;
+      --font-stack: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-stack);
+      background-color: var(--bg);
+      color: var(--text-main);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    header {
+      padding: 1.5rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--accent);
+      background: var(--accent-glow);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      border-radius: 999px;
+      margin-bottom: 1.25rem;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 5rem 0 3.5rem;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      max-width: 640px;
+      margin: 0 auto 2rem;
+    }
+
+    /* Cards & Grids */
+    .section-title {
+      font-size: 1.75rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.75rem;
+      text-align: center;
+    }
+
+    .section-desc {
+      color: var(--text-muted);
+      text-align: center;
+      margin-bottom: 2.5rem;
+      font-size: 1.05rem;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 4rem;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.75rem;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+
+    .card-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2rem;
+      height: 2rem;
+      background: var(--accent-glow);
+      color: var(--accent);
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-main);
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    /* Insight Block */
+    .insight-block {
+      background: linear-gradient(180deg, var(--surface) 0%, rgba(30, 41, 59, 0.4) 100%);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 4rem;
+    }
+
+    .insight-block h2 {
+      font-size: 1.4rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .insight-block p {
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+
+    .insight-block ul {
+      list-style: none;
+      display: grid;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    .insight-block li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      color: var(--text-main);
+      font-size: 0.95rem;
+    }
+
+    .insight-block li::before {
+      content: "✔";
+      color: var(--accent);
+      font-weight: bold;
+    }
+
+    /* Steps Section */
+    .steps-section {
+      margin-bottom: 4rem;
+    }
+
+    .step-item {
+      display: flex;
+      gap: 1.5rem;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .step-item:last-child {
+      border-bottom: none;
+    }
+
+    .step-bullet {
+      flex-shrink: 0;
+      width: 2.75rem;
+      height: 2.75rem;
+      border-radius: 50%;
+      background: var(--surface);
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    .step-content h3 {
+      font-size: 1.15rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .step-content p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* Call to Action Box */
+    .cta-box {
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.1) 0%, rgba(129, 140, 248, 0.05) 100%);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      border-radius: 16px;
+      padding: 3rem 2rem;
+      text-align: center;
+      margin-bottom: 5rem;
+    }
+
+    .cta-box h2 {
+      font-size: 1.8rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .cta-box p {
+      color: var(--text-muted);
+      max-width: 540px;
+      margin: 0 auto 1.75rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--accent);
+      color: #041226;
+      font-weight: 700;
+      padding: 0.85rem 1.75rem;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      font-size: 1rem;
+    }
+
+    .btn:hover {
+      opacity: 0.9;
+      transform: scale(1.02);
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 0;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 600px) {
+      .hero {
+        padding: 3.5rem 0 2.5rem;
+      }
+      .step-item {
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <div class="logo">
+        <span>⚡ Enfoque y Decisión</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="badge">EVIDENCIA CIENTÍFICA & NEUROCIENCIA</div>
+      <h1>¿Paralizado al decidir? <br><span>No es pereza, es sobrecarga.</span></h1>
+      <p>
+        Cuando la mente evalúa demasiadas variables, la corteza prefrontal se satura. Descubre por qué ocurre este bloqueo y cómo superarlo con un sistema claro.
+      </p>
+      <a href="#protocolo" class="btn">Ver el Protocolo de Acción ↓</a>
+    </section>
+
+    <!-- Los 3 Tipos de Parálisis -->
+    <section>
+      <h2 class="section-title">Las 3 Caras de la Parálisis</h2>
+      <p class="section-desc">Identificar con precisión tu tipo de bloqueo es el primer paso para desarmarlo.</p>
+      
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-num">01</div>
+          <h3>Parálisis de Elección</h3>
+          <p>
+            Ocurre ante múltiples opciones. El temor a equivocarse o la búsqueda de la "opción perfecta" agota tu energía mental antes de siquiera comenzar.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="card-num">02</div>
+          <h3>Parálisis de Tarea</h3>
+          <p>
+            Sabes exactamente qué debes hacer, pero existe una fricción invisible que te impide dar el primer paso. Es una desconexión entre saber y actuar.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="card-num">03</div>
+          <h3>Parálisis Mental</h3>
+          <p>
+            Saturación cognitiva o niebla mental (brain fog). El exceso de información y estímulos hace que el cerebro se apague temporalmente por autoprotección.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Fundamento Clínico -->
+    <section class="insight-block">
+      <h2>La Base Neurobiológica: Lo que la Ciencia Demuestra</h2>
+      <p>
+        Las investigaciones sobre funciones ejecutivas (como las documentadas por el Dr. Russell Barkley) revelan que la indecisión crónica no proviene de falta de carácter, sino de dos factores mecánicos:
+      </p>
+      <ul>
+        <li><strong>Límite de la Memoria de Trabajo:</strong> La mente humana solo puede retener un número muy limitado de variables activas antes de colapsar en confusión.</li>
+        <li><strong>Regulación de Dopamina:</strong> Si una tarea parece titánica o no ofrece un estímulo claro a corto plazo, el cerebro entra en respuesta de congelamiento (<em>freeze state</em>).</li>
+      </ul>
+    </section>
+
+    <!-- Protocolo de Escape -->
+    <section class="steps-section" id="protocolo">
+      <h2 class="section-title">Protocolo 80/20: Reglas de Escape</h2>
+      <p class="section-desc">Tres principios para recuperar el mando y forzar la ejecución hoy mismo.</p>
+
+      <div class="step-item">
+        <div class="step-bullet">1</div>
+        <div class="step-content">
+          <h3>Podar a 2 Opciones Máximo</h3>
+          <p>
+            Elimina deliberadamente todas las opciones secundarias. Si dudas entre 5 caminos, descarta 3 al azar. Es mejor avanzar con una decisión buena que morir esperando la perfecta.
+          </p>
+        </div>
+      </div>
+
+      <div class="step-item">
+        <div class="step-bullet">2</div>
+        <div class="step-content">
+          <h3>El Micro-Paso Ridículamente Pequeño</h3>
+          <p>
+            No te obligues a "terminar el proyecto". Oblígate únicamente a abrir el archivo o escribir una sola línea durante 2 minutos. Romper la inercia reduce drásticamente la resistencia mental.
+          </p>
+        </div>
+      </div>
+
+      <div class="step-item">
+        <div class="step-bullet">3</div>
+        <div class="step-content">
+          <h3>Externalizar la Memoria</h3>
+          <p>
+            Nunca tomes decisiones complejas dentro de tu cabeza. Escribe los dos únicos caminos en un papel en blanco. Al hacer tangible el pensamiento, liberas carga cognitiva al instante.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Llamado a la Acción -->
+    <section class="cta-box">
+      <h2>Pasa de la Teoría a la Conquista</h2>
+      <p>
+        El orden y la claridad no llegan por accidente; se construyen con sistemas probados. Descarga la plantilla de toma de decisiones para aplicar este método paso a paso.
+      </p>
+      <a href="mailto:tu-correo@ejemplo.com?subject=Solicitud de Guía de Toma de Decisiones" class="btn">Recibir Plantilla de Acción</a>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 Enfoque y Decisión. Diseñado para educar con orden, rigor y propósito.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
